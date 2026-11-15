@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Baking Hamster – pre-order (concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff4e8;--card:#fff;--ink:#4a1f08;--mute:#7a4a30;--line:#efcfb3;--accent:#e8590c;--btn:#c84b05;--on:#fff;
+--head:"Lilita One","Arial Rounded MT Bold",sans-serif;--body:"Nunito",system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1009;--card:#2b180e;--ink:#fdeede;--mute:#d6b9a4;--line:#4a2c1c;--accent:#ff8a45;--btn:#ff8a45;--on:#1f1009}}
+:root[data-theme="dark"]{--bg:#1f1009;--card:#2b180e;--ink:#fdeede;--mute:#d6b9a4;--line:#4a2c1c;--accent:#ff8a45;--btn:#ff8a45;--on:#1f1009}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+body.has{padding-bottom:84px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3{font-family:var(--head);font-weight:400;margin:0;line-height:1.05}
+.w{width:min(1040px,100% - 40px);margin:0 auto}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 24px;border-radius:99px;background:var(--btn);color:var(--on);font:800 15px var(--body);text-decoration:none;border:0;cursor:pointer}
+.btn:active{transform:scale(.97)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:2px solid var(--accent)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:62px}
+.brand{font:400 26px var(--head);text-decoration:none;color:var(--accent)}
+.nav .btn{min-height:40px;padding:0 18px}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:48px 0 28px}
+.hero h1{font-size:clamp(48px,10vw,104px);color:var(--accent)}
+.hero p{max-width:44ch;margin:16px 0 24px;font-size:18px;color:var(--mute)}
+.hc{flex:none;width:clamp(120px,22vw,210px);animation:float 3.4s ease-in-out infinite}
+.hc svg{width:100%;height:auto;overflow:visible}
+@keyframes float{50%{transform:translateY(-10px) rotate(-4deg)}}
+.grid{display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:start;padding:20px 0 56px}
+h2.sec{font-size:34px;color:var(--accent);margin-bottom:6px}
+.item{display:grid;grid-template-columns:76px 1fr auto;gap:8px 16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.item h3{font-size:clamp(24px,3.4vw,30px)}
+.item p{margin:2px 0 0;color:var(--mute);font-size:14.5px}
+.item .pm{color:var(--ink)}
+.ico{width:76px;height:76px;display:grid;place-items:center;border-radius:22px;background:var(--card);border:1px solid var(--line)}
+.ico svg{width:54px;height:54px;overflow:visible}
+.ico.hop svg{animation:hop .5s ease-out}
+@keyframes hop{30%{transform:translateY(-12px) scale(.94,1.08)}60%{transform:scale(1.08,.92)}}
+.st{display:inline-flex;align-items:center;border:2px solid var(--ink);border-radius:99px;background:var(--card)}
+.st button{width:42px;height:42px;border:0;background:none;color:var(--ink);font:800 20px var(--body);cursor:pointer;border-radius:99px}
+.st button:disabled{opacity:.3;cursor:default}
+.st output{min-width:28px;text-align:center;font-weight:800}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:32px}
+.info div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.info h3{font-size:22px;color:var(--accent);margin-bottom:6px}
+.info p{margin:0;font-size:14.5px;color:var(--mute)}
+.cart{position:sticky;top:80px;background:var(--card);border:2px solid var(--ink);border-radius:22px;padding:22px}
+.cart h2{font-size:30px;color:var(--accent);margin-bottom:8px}
+.cart ul{list-style:none;margin:0;padding:0}
+.cart li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.empty{color:var(--mute);margin:0}
+.tot{display:flex;justify-content:space-between;font:400 28px var(--head);margin:12px 0 16px}
+.cart fieldset{border:0;padding:0;margin:0 0 14px}
+.cart legend,.cart label{display:block;font-weight:800;font-size:14px;margin-bottom:6px;padding:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{min-height:40px;padding:0 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:800 14px var(--body);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--btn);color:var(--on);border-color:var(--btn)}
+.fh{margin:8px 0 0;font-size:13.5px;color:var(--mute)}
+.cart input{width:100%;min-height:46px;padding:0 14px;margin-bottom:14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:16px var(--body)}
+.cart .btn{width:100%}
+.cart .btn[aria-disabled=true]{opacity:.4;pointer-events:none}
+.why{margin:10px 0 0;font-weight:800;font-size:14px;color:var(--accent)}
+.hint{margin:10px 0 0;font-size:13.5px;color:var(--mute)}
+#fb{width:100%;min-height:110px;margin-top:10px;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:14px var(--body)}
+.bar{display:none}
+@media(max-width:860px){.grid{grid-template-columns:1fr;gap:32px}.cart{position:static}.item{grid-template-columns:76px 1fr}.item .st{grid-column:1/-1;justify-self:start}.hero .hc{display:none}
+.has .bar{display:flex;align-items:center;justify-content:space-between;position:fixed;left:0;right:0;bottom:0;z-index:12;padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg)}
+.bar b{display:block;font-size:13px;font-weight:700;opacity:.8}.bar span{font:400 24px var(--head)}.bar .btn{background:var(--accent);color:#1f1009}}
+footer{padding:24px 0 40px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hc,.ico.hop svg{animation:none}}
+</style>
+</head>
+<body>
+<header><div class="w nav"><a class="brand" href="#">The Baking Hamster</a><a class="btn" href="#cart">My order</a></div></header>
+<main>
+<section class="w hero">
+  <div><h1>Pre-order your bakes</h1><p>Pick your brownies, cookies and more, choose a weekend date, and send your order in one tap. Minimums and dates are checked for you.</p><a class="btn" href="#menu">See the menu</a></div>
+  <span class="hc" id="hc" aria-hidden="true"></span>
+</section>
+<div class="w grid" id="menu">
+  <div>
+    <h2 class="sec">Menu</h2>
+    <div id="list"></div>
+    <div class="info">
+      <div><h3>Ordering</h3><p>Pre-orders need at least 2 weeks’ notice. Full payment confirms your order.</p></div>
+      <div><h3>Payment</h3><p>PayNow or PayLah!</p></div>
+      <div><h3>Collection &amp; delivery</h3><p>Free self-pickup or meet-up on Sat &amp; Sun. Doorstep delivery is $10.</p></div>
+    </div>
+  </div>
+  <aside class="cart" id="cart" aria-live="polite">
+    <h2>Your order</h2>
+    <ul id="lines"></ul>
+    <p class="empty" id="empty">Nothing yet. Tap + on anything you like.</p>
+    <div class="tot"><span>Total</span><span id="total">$0.00</span></div>
+    <fieldset><legend>Collection or delivery</legend><div class="chips"><button type="button" class="chip" data-m="p" aria-pressed="true">Pickup (free)</button><button type="button" class="chip" data-m="d" aria-pressed="false">Delivery (+$10)</button></div><p class="fh" id="fh"></p></fieldset>
+    <fieldset><legend>Choose a date</legend><div class="chips" id="dates"></div></fieldset>
+    <label for="tm">Preferred time (optional)</label><input id="tm" type="text" placeholder="e.g. around 2pm">
+    <label for="ad" id="adl"></label><input id="ad" type="text">
+    <label for="nm">Your name</label><input id="nm" type="text" autocomplete="given-name">
+    <a class="btn" id="send" href="#" target="_blank" rel="noreferrer" aria-disabled="true">Copy order &amp; open Instagram</a>
+    <p class="why" id="why"></p>
+    <p class="hint" id="cp" role="status">This copies your order and opens their Instagram. Tap Message, paste and send. Full payment confirms it.</p>
+    <textarea id="fb" readonly hidden aria-label="Your order text"></textarea>
+  </aside>
+</div>
+</main>
+<div class="bar"><div><b id="bn"></b><span id="bt"></span></div><a class="btn" href="#cart">View order</a></div>
+<footer><div class="w">Unofficial concept preview, not affiliated with The Baking Hamster. Menu and prices are from their public Instagram posts.</div></footer>
+
+<script>
+/* ===== EDIT HERE ===== */
+const CFG={ig:'thebakinghamster',lead:14,fee:10};
+const ITEMS=[
+{id:'br',n:'Brownies',d:'3 × 1.5 × 1.5 in',u:'rectangle',p:4,min:6,t:'brownie'},
+{id:'ck',n:'Cookies',d:'About 3.9 in across',u:'cookie',p:3.5,min:3,t:'cookie'},
+{id:'bk',n:'Brookies',d:'3 × 3 in',u:'square',p:6,min:6,t:'brookie'},
+{id:'pc',n:'Pound Cake',d:'Full size 5.5 × 2.5 in tall',u:'whole cake',p:50,min:1,t:'cake'}
+];
+/* ===================== */
+const $=s=>document.querySelector(s),money=n=>'$'+n.toFixed(2);
+const chip='<g fill="#4a2a1a"><ellipse cx="24" cy="26" rx="3.2" ry="2.4"/><ellipse cx="38" cy="22" rx="3.2" ry="2.4"/><ellipse cx="42" cy="38" rx="3.2" ry="2.4"/><ellipse cx="26" cy="42" rx="3.2" ry="2.4"/><ellipse cx="33" cy="32" rx="3" ry="2.2"/></g>';
+const ICO={
+brownie:`<svg viewBox="0 0 64 64"><rect x="8" y="22" width="48" height="28" rx="5" fill="#3b2118"/><rect x="8" y="22" width="48" height="11" rx="5" fill="#5f3828"/><path d="M16 27l6 2 5-3 7 3 6-2 6 2" stroke="#8a5a43" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`,
+cookie:`<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#d7a257"/><circle cx="32" cy="32" r="24" fill="none" stroke="#b97f33" stroke-width="2"/>${chip}</svg>`,
+brookie:`<svg viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="36" rx="7" fill="#3b2118"/><path d="M32 14H49Q56 14 56 21V43Q56 50 49 50H32Z" fill="#d7a257"/><g fill="#4a2a1a"><circle cx="40" cy="25" r="2.6"/><circle cx="48" cy="35" r="2.6"/><circle cx="39" cy="42" r="2.6"/></g></svg>`,
+cake:`<svg viewBox="0 0 64 64"><path d="M6 30Q6 18 20 18H44Q58 18 58 30V46Q58 51 53 51H11Q6 51 6 46Z" fill="#e8b960"/><path d="M6 30Q6 18 20 18H44Q58 18 58 30Z" fill="#c98f3a"/><path d="M10 28H54V32Q50 38 46 32Q42 40 36 32Q30 38 26 32Q20 40 14 32Q10 34 10 28Z" fill="#fff6e6"/></svg>`};
+$('#hc').innerHTML=ICO.cookie;
+const q={};let di=-1,mode='p',MSG='';
+const D=[];{const t=new Date();t.setHours(0,0,0,0);t.setDate(t.getDate()+CFG.lead);for(let i=0;i<35&&D.length<8;i++){const d=new Date(t);d.setDate(t.getDate()+i);if(d.getDay()==6||d.getDay()==0)D.push(d)}}
+const fd=d=>d.toLocaleDateString('en-SG',{weekday:'short',day:'numeric',month:'short'});
+
+$('#list').innerHTML=ITEMS.map(m=>`<article class="item"><span class="ico" id="ic${m.id}" aria-hidden="true">${ICO[m.t]}</span><div><h3>${m.n}</h3><p>${m.d}</p><p class="pm"><b>${money(m.p)}</b> per ${m.u} · min ${m.min}</p></div><div class="st" role="group" aria-label="${m.n} quantity"><button type="button" data-i="${m.id}" data-d="-1" aria-label="Remove one ${m.n}" disabled>−</button><output id="o${m.id}">0</output><button type="button" data-i="${m.id}" data-d="1" aria-label="Add ${m.n}">+</button></div></article>`).join('');
+function dates(){$('#dates').innerHTML=D.map((d,i)=>`<button type="button" class="chip" data-di="${i}" aria-pressed="${i==di}">${fd(d)}</button>`).join('')}
+
+document.addEventListener('click',e=>{
+ const s=e.target.closest('[data-i]');
+ if(s){const m=ITEMS.find(x=>x.id==s.dataset.i),c=q[m.id]||0,up=+s.dataset.d>0,n=up?(c?Math.min(c+1,60):m.min):(c>m.min?c-1:0);
+  q[m.id]=n;$('#o'+m.id).textContent=n;s.parentNode.querySelector('[data-d="-1"]').disabled=!n;
+  if(up){const ic=$('#ic'+m.id);ic.classList.remove('hop');void ic.offsetWidth;ic.classList.add('hop')}draw();return}
+ const dc=e.target.closest('[data-di]');if(dc){di=+dc.dataset.di;dates();$(`[data-di="${di}"]`).focus();draw();return}
+ const mc=e.target.closest('[data-m]');if(mc){mode=mc.dataset.m;document.querySelectorAll('[data-m]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m==mode));draw()}});
+['#tm','#ad','#nm'].forEach(x=>$(x).oninput=draw);
+
+function draw(){
+ const rows=ITEMS.filter(m=>q[m.id]),sub=rows.reduce((a,m)=>a+m.p*q[m.id],0),fee=rows.length&&mode=='d'?CFG.fee:0,tot=sub+fee,n=rows.reduce((a,m)=>a+q[m.id],0);
+ $('#lines').innerHTML=rows.map(m=>`<li><span>${q[m.id]} × ${m.n}</span><b>${money(m.p*q[m.id])}</b></li>`).join('')+(fee?`<li><span>Doorstep delivery</span><b>${money(fee)}</b></li>`:'');
+ $('#empty').hidden=!!rows.length;$('#total').textContent=$('#bt').textContent=money(tot);$('#bn').textContent=n+(n==1?' item':' items');
+ document.body.classList.toggle('has',n>0);
+ $('#adl').textContent=mode=='d'?'Delivery address':'Meet-up location (optional)';
+ const sd=di>=0?D[di].getDay()==6:null;
+ $('#fh').textContent=mode=='p'?'Free self-pickup or meet-up at a location you choose, on Sat & Sun.':'Doorstep delivery is $10. '+(sd===null?'Saturday: morning to evening. Sunday: morning to afternoon.':sd?'Saturday slots run from morning to evening.':'Sunday slots run from morning to afternoon.');
+ const nm=$('#nm').value.trim(),ad=$('#ad').value.trim(),tm=$('#tm').value.trim();
+ const why=!rows.length?'Add something to your order':di<0?'Pick a date':(mode=='d'&&!ad)?'Add your delivery address':!nm?'Add your name':'';
+ $('#why').textContent=why;const s=$('#send');
+ if(why){MSG='';s.setAttribute('aria-disabled','true');s.href='#';return}
+ s.removeAttribute('aria-disabled');
+ MSG='Hi! I’d like to pre-order:\n'+rows.map((m,i)=>`${i+1}. ${q[m.id]} × ${m.n} – ${money(m.p*q[m.id])}`).join('\n')+`\n\nSubtotal: ${money(sub)}\n`+(mode=='d'?`Doorstep delivery: ${money(fee)}\n`:'Self-pickup / meet-up: free\n')+`Total: ${money(tot)}\nDate: ${fd(D[di])}`+(tm?`\nPreferred time: ${tm}`:'')+(ad?`\n${mode=='d'?'Address':'Meet-up location'}: ${ad}`:'')+`\nName: ${nm}\n\nHappy to pay by PayNow or PayLah! to confirm.`;
+ s.href='https://www.instagram.com/'+CFG.ig+'/'}
+
+$('#send').addEventListener('click',()=>{if(!MSG)return;
+ const ok=()=>{$('#cp').textContent='Order copied! On their Instagram, tap Message, paste it and hit send.'};
+ const fb=()=>{$('#cp').textContent='Couldn’t copy automatically. Please copy your order from the box below.';$('#fb').hidden=false;$('#fb').value=MSG;$('#fb').select()};
+ navigator.clipboard?navigator.clipboard.writeText(MSG).then(ok,fb):fb()});
+dates();draw();
+</script>
+</body>
+</html>
